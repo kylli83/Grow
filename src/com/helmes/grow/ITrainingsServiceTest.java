@@ -31,6 +31,19 @@ public class ITrainingsServiceTest {
 		assertTrue("Should have found one training", actual.size() > 0);
 		assertEquals("Should have found one training", firstTraining, actual.get(0));
 	}
+	@Test
+	public void shouldntCarePositionCase () {
+		List<Training> allTrainings = new ArrayList<>();
+		String position = "ANALYST";
+		final Training firstTraining = createTraining(1L, "Training for teamleads and analysts", "Teamlead", "Analyst");
+		final Training secondTraining = createTraining(2L, "Training for testers and developers", "Tester", "Developer");
+		allTrainings.add(firstTraining);
+		allTrainings.add(secondTraining);
+		final List<Training> actual = this.service.findRelevant(position, allTrainings);
+
+		assertTrue("Should have found one training", actual.size() > 0);
+		assertEquals("Should have found one training", firstTraining, actual.get(0));
+	}
 
 	private Training createTraining(Long id, String name, String... p) {
 		List<String> positions = new ArrayList(Arrays.asList(p));
