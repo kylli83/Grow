@@ -13,7 +13,8 @@ public class TrainingsService implements ITrainingsService {
 	public List<Training> findRelevant(String jobTitle, List<Training> trainings) {
 		List<Training> result = new ArrayList<>();
 		for (Training t : trainings) {
-			if (t.getRelatedJobTitles().contains(jobTitle)) {
+			List<String> jobTitles = t.getRelatedJobTitles();
+			if (convertListToUpperCase(jobTitles).contains(jobTitle.toUpperCase())) {
 				result.add(t);
 			}
 		}
