@@ -24,4 +24,9 @@ public class TrainingsService implements ITrainingsService {
 	public List<Training> findIrrelevant(String jobTitle, List<Training> trainings) {
 		return null;
 	}
+
+	public List<String> convertListToUpperCase(List<String> trainings) {
+		return null;
+	}
+
 }

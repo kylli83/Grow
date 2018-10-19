@@ -34,7 +34,7 @@ public class ITrainingsServiceTest {
 	@Test
 	public void shouldntCarePositionCase () {
 		List<Training> allTrainings = new ArrayList<>();
-		String position = "ANALYST";
+		String position = "ANAlYST";
 		final Training firstTraining = createTraining(1L, "Training for teamleads and analysts", "Teamlead", "Analyst");
 		final Training secondTraining = createTraining(2L, "Training for testers and developers", "Tester", "Developer");
 		allTrainings.add(firstTraining);
@@ -43,6 +43,16 @@ public class ITrainingsServiceTest {
 
 		assertTrue("Should have found one training", actual.size() > 0);
 		assertEquals("Should have found one training", firstTraining, actual.get(0));
+	}
+
+
+	@Test
+	public void shouldConvertListToUpperCase() {
+		List<String> list = new ArrayList<>();
+		list.add("a");
+		List<String> actual = service.convertListToUpperCase(list);
+		String expected = "A";
+		assertEquals(expected, actual);
 	}
 
 	private Training createTraining(Long id, String name, String... p) {
