@@ -25,8 +25,12 @@ public class TrainingsService implements ITrainingsService {
 		return null;
 	}
 
-	public List<String> convertListToUpperCase(List<String> trainings) {
-		return null;
+	public List<String> convertListToUpperCase(List<String> stringList) {
+		List<String> result = new ArrayList<>();
+		for (String s: stringList) {
+			result.add(s.toUpperCase());
+		}
+		return result;
 	}
 
 }

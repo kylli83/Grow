@@ -6,5 +6,5 @@ public interface ITrainingsService {
 	List<Training> findAll();
 	List<Training> findRelevant(String jobTitle, List<Training> trainings);
 	List<Training> findIrrelevant(String jobTitle, List<Training> trainings);
-	List<String> convertListToUpperCase(List<String> trainings);
+	List<String> convertListToUpperCase(List<String> stringList);
 }

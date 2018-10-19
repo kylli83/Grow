@@ -52,7 +52,8 @@ public class ITrainingsServiceTest {
 		list.add("a");
 		List<String> actual = service.convertListToUpperCase(list);
 		String expected = "A";
-		assertEquals(expected, actual);
+		assertTrue("Should have found one item", actual.size() > 0);
+		assertEquals(expected, actual.get(0));
 	}
 
 	private Training createTraining(Long id, String name, String... p) {
