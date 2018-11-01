@@ -31,6 +31,20 @@ public class ITrainingsServiceTest {
 		assertTrue("Should have found one training", actual.size() > 0);
 		assertEquals("Should have found one training", firstTraining, actual.get(0));
 	}
+    @Test
+    public void shouldFindOneIrrelevantTraining() {
+        List<Training> allTrainings = new ArrayList<>();
+        String position = "Analyst";
+        final Training firstTraining = createTraining(1L, "Training for teamleads and business managers", "Teamlead", "Business manager");
+        final Training secondTraining = createTraining(2L, "Training for testers and developers", "Tester", "Developer");
+        final Training thirdTraining = createTraining (3L, "Training for testers and analysts", "Tester", "Analyst");
+        allTrainings.add(firstTraining);
+        allTrainings.add(secondTraining);
+        final List<Training> actual = this.service.findIrrelevant(position, allTrainings);
+
+        assertTrue ("Should have found one training", actual.size() > 0);
+        assertEquals("Should have found one training", firstTraining, actual.get(0));
+    }
 	@Test
 	public void shouldntCarePositionCase () {
 		List<Training> allTrainings = new ArrayList<>();
@@ -44,8 +58,6 @@ public class ITrainingsServiceTest {
 		assertTrue("Should have found one training", actual.size() > 0);
 		assertEquals("Should have found one training", firstTraining, actual.get(0));
 	}
-
-
 	@Test
 	public void shouldConvertListToUpperCase() {
 		List<String> list = new ArrayList<>();

@@ -35,9 +35,8 @@ public class TrainingsService implements ITrainingsService {
         for (Training t : trainings) {
             List<String> jobTitles = t.getRelatedJobTitles();
             if (!convertListToUpperCase(jobTitles).contains(jobTitle.toUpperCase())){
-                continue;
+				irrelevantresult.add(t);
             }
-            irrelevantresult.add(t);
         }
         return irrelevantresult;
 }
